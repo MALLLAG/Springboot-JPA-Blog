@@ -6,61 +6,43 @@
 	<sec:authentication property="principal" var="principal"/>
 </sec:authorize>
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<style type="text/css">
-.bs-example {
-	margin: 20px;
-}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>블로그</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
 
-.log-small {
-	color: #f4511e;
-	font-size: 50px;
-}
-
-footer .glyphicon {
-	font-size: 20px;
-	margin-bottom: 20px;
-	color: #f4511e;
-}
-</style>
-<nav class="navbar navbar-default">
-	<div class="container-fluid">
-
-		<div class="navbar-header">
-			<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-				<span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span>
-			</button>
-			<a class="navbar-brand" href="<c:url value='/'/>">Home</a>
-		</div>
-
-		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-			<ul class="nav navbar-nav">
-				<li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">게시판 <span class="caret"></span></a>
-					<ul class="dropdown-menu">
-						<li><a href="#">스포츠</a></li>
-						<li><a href="#">연예인</a></li>
-						<li><a href="#">취업</a></li>
-					</ul></li>
-			</ul>
+<link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.js"></script>
+</head>
+<body>
+	<nav class="navbar navbar-expand-md bg-dark navbar-dark">
+		<a class="navbar-brand" href="/">Blog</a>
+		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+		<div class="collapse navbar-collapse" id="collapsibleNavbar">
 
 			<c:choose>
 				<c:when test="${empty principal}">
-					<ul class="nav navbar-nav navbar-right">
-						<li><a href="/auth/loginForm">로그인</a></li>
-						<li><a href="/auth/joinForm">회원가입</a></li>
+					<ul class="navbar-nav">
+						<li class="nav-item"><a class="nav-link" href="/auth/loginForm">로그인</a></li>
+						<li class="nav-item"><a class="nav-link" href="/auth/joinForm">회원가입</a></li>
 					</ul>
 				</c:when>
 				<c:otherwise>
-					<ul class="nav navbar-nav navbar-right">
-						<li><a href="/board/saveForm">글쓰기</a></li>
-						<li><a href="/user/updateForm">회원정보</a></li>
-						<li><a href="/logout">로그아웃</a></li>
+					<ul class="navbar-nav">
+						<li class="nav-item"><a class="nav-link" href="/board/saveForm">글쓰기</a></li>
+						<li class="nav-item"><a class="nav-link" href="/user/updateForm">회원정보</a></li>
+						<li class="nav-item"><a class="nav-link" href="/logout">로그아웃</a></li>
 					</ul>
 				</c:otherwise>
 			</c:choose>
-
 		</div>
-	</div>
-
-</nav>
+	</nav>
+	<br />
